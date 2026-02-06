@@ -9,13 +9,15 @@ export default function App() {
       .then(data => setUserData(data));
   }, []);
 
+  const {name, email, picture} = userData?.results?.[0] || {};
+
   return (
     <>
       {userData && (
         <div className='user-card'>
-          <h1>{userData.results[0].name.first} {userData.results[0].name.last}</h1>
-          <p>{userData.results[0].email}</p>
-          <img src={userData.results[0].picture.large} alt="" />
+          <h1>{name.first} {name.last}</h1>
+          <p>{email}</p>
+          <img src={picture.large} alt="" />
         </div>
       )}
     </>
